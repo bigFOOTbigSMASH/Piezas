@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/bigFOOTbigSMASH/Piezas.svg?branch=master)](https://travis-ci.org/bigFOOTbigSMASH/Piezas)
+
 # Piezas
 
 ## Associated Enumerated Types
