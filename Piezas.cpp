@@ -1,5 +1,6 @@
 #include "Piezas.h"
 #include <vector>
+using namespace std;
 /** CLASS Piezas
  * Class for representing a Piezas vertical board, which is roughly based
  * on the game "Connect Four" where pieces are placed in a column and 
@@ -22,6 +23,14 @@
 **/
 Piezas::Piezas()
 {
+    vector<vector<Piece>> board_start(BOARD_ROWS, vector<Piece>(BOARD_COLS));
+    turn = X;
+    board = board_start;
+    for(int i = 0; i < BOARD_ROWS; i++){
+        for(int j = 0; j < BOARD_COLS; j++){
+            board[i][j] = Blank;
+        }
+    }
 }
 
 /**
@@ -30,6 +39,12 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    turn = X;
+    for(int i = 0; i < BOARD_ROWS; i++){
+        for(int j = 0; j < BOARD_COLS; j++){
+            board[i][j] = Blank;
+        }
+    }
 }
 
 /**
@@ -42,6 +57,32 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
+    if(column < 0 || column > BOARD_ROWS){
+        if(turn == O){
+            turn = X;
+        }else{
+            turn = O;
+        }
+        return Invalid;
+    }
+    int temp = 0;
+    while(temp < BOARD_ROWS){
+        if(board[temp][column] == Blank){
+            board[temp][column] = turn;
+            if(turn == O){
+                turn = X;
+            }else{
+                turn = O;
+            }
+            return board[temp][column];
+        }
+        temp++;
+    }
+    if(turn == O){
+        turn = X;
+    }else{
+        turn = O;
+    }
     return Blank;
 }
 
@@ -51,6 +92,13 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
+    //out of bounds
+    if(column < 0 || column > BOARD_COLS || row < 0 || row > BOARD_ROWS){
+        return Invalid;
+    }else if(board[row][column] != Blank){
+        //if filled
+        return board[row][column];
+    }
     return Blank;
 }
 
