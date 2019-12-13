@@ -122,9 +122,6 @@ Piece Piezas::gameState()
         xcur = 0;
         ocur = 0;
         for(int j = 0; j < BOARD_ROWS; j++){
-            if(board[j][i] == Blank){
-                return Invalid;
-            }
             if(board[j][i] == X){
                 xcur += 1;
                 if (xcur > xhigh){
