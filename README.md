@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/bigFOOTbigSMASH/Piezas.svg?branch=master)](https://travis-ci.org/bigFOOTbigSMASH/Piezas)
+[![Coverage Status](https://coveralls.io/repos/github/bigFOOTbigSMASH/Piezas/badge.svg?branch=master)](https://coveralls.io/github/bigFOOTbigSMASH/Piezas?branch=master)
 
 # Piezas
 
