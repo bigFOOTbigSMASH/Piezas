@@ -113,5 +113,63 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+    int ohigh = 0;
+    int xhigh = 0;
+    int xcur = 0;
+    int ocur = 0;
+    //vertical
+    for(int i = 0; i < BOARD_COLS; i++){
+        xcur = 0;
+        ocur = 0;
+        for(int j = 0; j < BOARD_ROWS; j++){
+            if(board[j][i] == Blank){
+                return Invalid;
+            }
+            if(board[j][i] == X){
+                xcur += 1;
+                if (xcur > xhigh){
+                    xhigh = xcur;
+                }
+                ocur = 0;
+            }else{
+                ocur += 1;
+                if(ocur > ohigh){
+                    ohigh = ocur;
+                }
+                xcur = 0;
+            }
+        }
+    }
+    //horizontal
+    for(int i = 0; i < BOARD_ROWS; i++){
+        xcur = 0;
+        ocur = 0;
+        for(int j = 0; j < BOARD_COLS; j++){
+            if(board[i][j] == Blank){
+                return Invalid;
+            }
+            if(board[i][j] == X){
+                xcur += 1;
+                if (xcur > xhigh){
+                    xhigh = xcur;
+                }
+                ocur = 0;
+            }else{
+                ocur += 1;
+                if(ocur > ohigh){
+                    ohigh = ocur;
+                }
+                xcur = 0;
+            }
+        }
+    }
+    //win?
+    if(xhigh > ohigh){
+        return X;
+    }else if(xhigh < ohigh){
+        return O;
+    }else{
+        return Blank;
+    }
     return Blank;
 }
